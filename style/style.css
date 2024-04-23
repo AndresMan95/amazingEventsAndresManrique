@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.logo{
+    max-width: 150px;
+    width: auto;
+    
+}
+.collapse{
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+.carousel img{
+    
+    width: max-content;
+    height: 40vh;
+    object-fit:cover;
+}
+
+.list-group{
+    display: flex;
+    flex-direction: row;
+    
+    }
+.lista{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 7vh;
+ 
+    
+}
+
+.tarjeta{
+    padding-top: 7vh;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 7vh;
+}
+
+.detalles{
+    display: flex;
+    justify-content: space-between;
+}
+
+.text-bg-secondary{
+    display: flex;
+    justify-content:space-between ;
+    
+}
+#formulario{
+    
+
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    padding-top: 5vh;
+    
+}
+
+.mb-3{
+    width: 35vw;
+    
+}
+.enviar{
+    padding-top: 1vh;
+    display: flex;
+    flex-direction: row-reverse;
+    align-self: flex-end;
+}
+
+.form-control{
+    border: 1px solid black;
+}
+/* .eventos{
+
+    display: flex;
+    justify-content: center;
+    padding-top: 7vh;
+ 
+}
+
+
+
+.row{
+    width: 50vw;
+    padding: 3vh;
+
+    background-color: gainsboro;
+}
+
+.col-md-4, .col-md-8{
+    padding: 2vh;
+    background-color: white;
+}
+ */
+.tabla,.table{
+    padding: 7vh 20vh;
+
+}
+.col{
+   
+   margin: 1vh;
+   padding: 1vh;
+    
+ 
+}
+
+
+
+
+.tarjet{
+    padding: 3vh;
+    background-color: gray;
+}
+
+footer img {
+    height: auto;
+    width: 4vh ;
+
+}
+#footer{
+    bottom: 0;
+    position:fixed;
+    width: 100%;
+}
