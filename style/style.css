@@ -41,9 +41,11 @@
     padding-bottom: 7vh;
 }
 
+
 .detalles{
     display: flex;
     justify-content: space-between;
+
 }
 
 .text-bg-secondary{
@@ -128,3 +130,48 @@ footer img {
     position:fixed;
     width: 100%;
 }
+
+#card{
+    width: 100%;
+}
+
+.card{
+   
+    display: flex;
+    justify-content: center;
+    width: 19rem;
+}
+.card.card{
+    
+    display: flex;
+    align-items: center;
+}
+.card-text{
+    height: 10.5vh;
+}
+/* #body{
+    bottom: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    height: 100%;
+} */
+
+#main{
+    height: 78.8vh;
+} 
+
+@media only screen and (min-width:320px) and (max-width: 2000px  )  {
+#card{
+    display: flex;
+    justify-content: center;
+    
+   
+    
+}
+}
+@media only screen and (min-width:320px) and (max-width: 991px  )  {
+   .navbar-collapse{
+    display: flex;
+    justify-content: flex-start;
+   }
+    }
