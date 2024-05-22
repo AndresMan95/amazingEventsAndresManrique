@@ -34,6 +34,12 @@
     
 }
 
+.listCheck{
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 4vh;
+}
+
 .tarjeta{
     padding-top: 7vh;
     display: flex;
@@ -101,7 +107,7 @@
 }
  */
 .tabla,.table{
-    padding: 7vh 20vh;
+    padding: 7vh 12.5vh;
 
 }
 .col{
@@ -112,12 +118,14 @@
  
 }
 
-
+/* #main, .table{
+    background-color: #380806;
+} */
 
 
 .tarjet{
-    padding: 3vh;
-    background-color: gray;
+    padding: 2vh;
+    background-color:#6C757D;
 }
 
 footer img {
@@ -156,9 +164,16 @@ footer img {
     height: 100%;
 } */
 
-#main{
+/* #main{
     height: 78.8vh;
-} 
+}  */
+#col{
+    display: flex;
+    justify-content: center;
+}
+/* #col img{
+    object-fit:contain;
+} */
 
 @media only screen and (min-width:320px) and (max-width: 2000px  )  {
 #card{
@@ -175,3 +190,11 @@ footer img {
     justify-content: flex-start;
    }
     }
+
+@media only screen  and (max-width:607px){
+.lista{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+}

@@ -194,6 +194,64 @@ let data = {
         },
     ],
 };
+let value = window.location.href
+value = new URL(value).searchParams.get('value')
+console.log(value);
+document.getElementById('tarjet').addEventListener('DOMContentLoaded', function () {
+    pintarTarjetas()
+}
+)
+function pintarTarjetas(arregloPintar, divPadre) {
+
+    for (let i = 0; i < arregloPintar.length; i++) {
+        if (arregloPintar[i]._id == value) {
+            console.log(arregloPintar[i])
+            crearTarjeta(divPadre,arregloPintar[i])
+        }
+
+    }
+
+}
+let padreTarjeta=document.querySelector('#tarjet')
+pintarTarjetas(data.events,padreTarjeta)
+function crearTarjeta(padreTarjeta,tarjeta){
+    let nuevaTarjeta = document.createElement("div")
+            nuevaTarjeta.classList.add("tarjet")
+            nuevaTarjeta.innerHTML = `
+            <div class="row">
+              <div id='col' class="col bg-white ">
+                <img class="img-fluid object-fit-cover " src=${tarjeta.image} alt="cine">
+              </div>
+              <div class="col bg-white "  >
+                <h3 class="text-center">
+                  ${tarjeta.name}
+                </h3>
+                <p class="text-start">
+                  Date:  ${tarjeta.date}
+                </p>
+                <p class="text-start">
+                  Description: ${tarjeta.description}
+                </p>
+                <p class="text-start">
+                Category: ${tarjeta.category}
+                </p>
+                <p class="text-start">
+                  Place: ${tarjeta.place}
+                </p>
+                <p class="text-start">
+                  Capacity: ${tarjeta.capacity}
+                </p>
+                <p class="text-start">
+                ${tarjeta.assistance? 'Assistance':'Estimate'} : ${tarjeta.assistance? tarjeta.assistance:tarjeta.estimate}
+                </p>
+                <p class="text-start">
+                  Price: $${tarjeta.price}
+                </p>
+              </div>
+            </div>`
+
+        padreTarjeta.appendChild(nuevaTarjeta)
+}
 
 /* function pintarTarjeta(arregloPintar, divPadre) {
     for (let i = 0; i < arregloPintar.length; i++) {

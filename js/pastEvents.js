@@ -200,20 +200,57 @@ for (let i = 0; i < events.length; i++) {
     console.log(element); 
 } */
 
+document.addEventListener('DOMContentLoaded', function () {
+  aplicarFiltros()
+})
+
+
+function aplicarFiltros() {
+  let checkbox = document.getElementById('lista')
+  let textoBusqueda = document.getElementById('buscar')
+
+  function filtrarEventos(){
+    let texto=textoBusqueda.value.toLowerCase()
+    let checkboxesSeleccionado = document.querySelectorAll('input[type=checkbox]:checked')
+    let categoriasSeleccionadas= Array.from(checkboxesSeleccionado).map(checkbox=>checkbox.value)
+
+    let eventosFiltrados =data.events.filter(evento=>{
+      let coincideTexto=evento.name.toLowerCase().includes(texto)
+      let coincideCategoria= categoriasSeleccionadas.length===0 || categoriasSeleccionadas.includes(evento.category)
+      let coincideFecha = evento.date<data.currentDate
+      return coincideTexto && coincideCategoria &&coincideFecha
+    })
+
+      pintarTarjetas(eventosFiltrados, padreTarjeta)
+    
+   
+  }
+  checkbox.addEventListener('change', filtrarEventos)
+  textoBusqueda.addEventListener('input', filtrarEventos)
+}
+
+
 
 function pintarTarjetas(arregloPintar,divPadre){
-    
+  divPadre.innerHTML=''
+  if(arregloPintar.length===0){
+    let mensaje= document.createElement('div')
+    mensaje.classList.add('no-eventos')
+    mensaje.innerHTML=`<div class="alert alert-primary" role="alert">
+    No hay eventos que coincidan con la busqueda
+  </div>`
+    divPadre.appendChild(mensaje)
+    console.log(arregloPintar.length);
+  }else{
     for (let i = 0; i < arregloPintar.length; i++) {
-        if(data.events[i].date<data.currentDate){
+        if(arregloPintar[i].date<data.currentDate){
         crearTarjeta(divPadre,arregloPintar[i])
+        console.log(arregloPintar.length);
         }
     }
-
+  }
 }
-let padreTarjeta=document.querySelector("#card")
 
-/* crearTarjeta(padreTarjeta, data.events[0]) */
-pintarTarjetas(data.events,padreTarjeta)
 
 function crearTarjeta(padreTarjeta,tarjeta){
     let nuevaTarjeta= document.createElement("card")
@@ -225,7 +262,7 @@ function crearTarjeta(padreTarjeta,tarjeta){
       <p class="card-text" >${tarjeta.description} </p>
       <div class="detalles">
         <p>$${tarjeta.price}</p>
-        <a href="/details.html"  class="btn btn-primary">Details</a>
+        <a href="/details.html?value=${tarjeta._id}"  class="btn btn-primary">Details</a>
       </div>
     </div>
   </div>`
@@ -233,3 +270,29 @@ function crearTarjeta(padreTarjeta,tarjeta){
     padreTarjeta.appendChild(nuevaTarjeta)
  
 }
+
+function pintarChecks(arregloPintar, padre){
+  padre.innerHTML=''
+    for (let i = 0; i < arregloPintar.length-1; i++) {
+      if (arregloPintar[i+1].category!=arregloPintar[i].category){
+        crearCheck(padre,arregloPintar[i])
+      } 
+    }
+     crearCheck(padre, arregloPintar[arregloPintar.length - 1]);
+  }
+let chequeo=document.querySelector('.listCheck')
+pintarChecks(data.events,chequeo)
+function crearCheck(padreCheck,run){
+let checkBox= document.createElement('div')
+checkBox.classList.add('div')
+checkBox.innerHTML=` <div class="form-check form-check-inline">
+<input class="form-check-input" type="checkbox" id='${run._id}' value="${run.category}">
+<label class="form-check-label" for="inlineCheckbox1">${run.category}</label>
+</div>`
+padreCheck.appendChild(checkBox)
+}
+
+let padreTarjeta=document.querySelector("#card")
+
+/* crearTarjeta(padreTarjeta, data.events[0]) */
+pintarTarjetas(data.events,padreTarjeta)
